@@ -28,3 +28,20 @@ Análisis: definiendo requisitos y casos de uso (milestone `M1 - Análisis y Dis
 - En los PR: `Closes #N` solo si el PR termina la issue; si es un avance parcial, `Relacionado con #N`. El trabajo grande se divide en sub-issues.
 - PR con etiqueta, milestone y a Alejandro o Joel como revisor. No hacer merge de un PR propio sin aprobación.
 - Las acciones visibles en GitHub (crear issues, PR, comentarios, merges, push) se confirman antes con el usuario.
+
+### Commits
+
+- Sin coautoría: nunca añadir `Co-Authored-By`, "Generated with Claude" ni ninguna mención a Claude o a IA en commits, PR o código. El autor es solo quien commitea.
+- Primera línea ≤ 72 caracteres, sin punto final, minúscula inicial. Cuerpo opcional (tras línea en blanco) explicando el *por qué*.
+- Un commit = un cambio lógico y atómico; no mezclar contenido, correcciones y formato.
+- Revisar `git status` y `git diff --staged` antes de commitear y añadir archivos concretos, no `git add .` a ciegas.
+- Hacer commit solo cuando el usuario lo pida.
+- Sin permiso explícito, nada de `--no-verify`, `push --force`, `reset --hard` ni `--amend` de commits ya publicados.
+- No commitear secretos, claves, `.env`, binarios de compilación ni archivos del IDE.
+
+## Naming
+
+- Nombres descriptivos y en un solo idioma; sin abreviaturas crípticas.
+- Seguir la convención del lenguaje (en Kotlin: `camelCase` para variables y funciones, `PascalCase` para clases, `UPPER_SNAKE_CASE` para constantes) y la del código existente.
+- Booleanos con prefijo de estado (`estaActivo`, `hayDatos`) y sin números mágicos: constantes con nombre.
+- Archivos de documentación y figuras en minúsculas con guiones, sin tildes ni espacios.
