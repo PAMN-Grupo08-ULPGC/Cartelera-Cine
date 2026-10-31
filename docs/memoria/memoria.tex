@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[spanish,es-tabla]{babel}
+\usepackage[spanish,es-tabla,es-nolists]{babel}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -152,7 +152,7 @@ En este apartado se presentan los actores del sistema, los requisitos funcionale
 \subsection{Requisitos Funcionales (RF)}
 Cada requisito funcional cuenta con una prioridad asignada (Alta, Media, Baja) y un criterio de verificación específico que se validará en el apartado de pruebas.
 
-\begin{longtable}{L{1.5cm} L{2.7cm} L{4.5cm} L{1.4cm} L{3.6cm}}
+\begin{longtable}{L{1.4cm} L{2.4cm} L{4.4cm} L{1.2cm} L{4.3cm}}
 \caption{Requisitos Funcionales del proyecto.}\\
 \toprule
 \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prior.} & \textbf{Criterio de verificación} \\
@@ -162,8 +162,9 @@ Cada requisito funcional cuenta con una prioridad asignada (Alta, Media, Baja) y
 \textbf{ID} & \textbf{Nombre} & \textbf{Descripción} & \textbf{Prior.} & \textbf{Criterio de verificación} \\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 
 \textbf{RF-01} & Registro de usuario & El sistema debe permitir crear una cuenta con nombre, correo y contraseña. Si se introduce un código de trabajador válido, la cuenta se crea con rol Trabajador; en caso contrario se crea con rol Cliente. & Alta & Con datos válidos (correo con formato correcto, contraseña de al menos 8 caracteres) se crea la cuenta y se inicia sesión. Si el correo ya existe o el código de trabajador no es válido, se muestra un mensaje de error específico junto al campo afectado. \\
 \midrule
@@ -205,8 +206,9 @@ Los requisitos no funcionales aseguran el cumplimiento de los criterios de calid
 \textbf{ID} & \textbf{Categoría} & \textbf{Descripción} & \textbf{Métrica / Verificación} \\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 
 \textbf{RNF-01} & Arquitectura & La aplicación separa responsabilidades entre la interfaz, la lógica de presentación, la lógica de negocio y el acceso a datos. & Los componentes de interfaz no acceden directamente a la red ni a la base de datos. \\
 \midrule
@@ -218,7 +220,7 @@ Los requisitos no funcionales aseguran el cumplimiento de los criterios de calid
 \midrule
 \textbf{RNF-05} & Seguridad & Las contraseñas no se almacenan en claro, las operaciones privadas requieren estar autenticado y los códigos QR no pueden falsificarse. & No hay contraseñas legibles en el almacenamiento; una operación privada sin autenticar se rechaza; un QR modificado se rechaza al validarlo. \\
 \midrule
-\textbf{RNF-06} & Funcionamiento sin conexión & La cartelera y las entradas compradas están disponibles sin conexión a partir de la última sincronización. & Con el modo avión activado se muestran la cartelera en caché y el QR de las entradas. \\
+\textbf{RNF-06} & \hspace{0pt}Funcionamiento sin conexión & La cartelera y las entradas compradas están disponibles sin conexión a partir de la última sincronización. & Con el modo avión activado se muestran la cartelera en caché y el QR de las entradas. \\
 \midrule
 \textbf{RNF-07} & Gestión de estados y errores & Todas las pantallas con datos asíncronos contemplan los estados de carga, éxito, vacío y error. & Ante pérdida de conexión la app no se cierra y muestra un mensaje con opción de reintentar. \\
 \midrule
@@ -238,8 +240,9 @@ Las historias de usuario sirven como base para el registro de \textit{issues} y 
 \endfirsthead
 \toprule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 \textbf{HU-01}\newline Registro de cliente\newline\small(RF-01) & \textbf{Como} cliente nuevo, \textbf{quiero} registrarme con mi correo \textbf{para} poder comprar entradas y conservarlas en mi cuenta. & 1. El correo debe tener un formato válido.\newline 2. La contraseña debe tener al menos 8 caracteres.\newline 3. Si el correo ya está registrado, se muestra un error junto al campo.\newline 4. Tras registrarse, accede directamente a la cartelera. \\
 \midrule
 \textbf{HU-02}\newline Registro de trabajador\newline\small(RF-01) & \textbf{Como} trabajador del cine, \textbf{quiero} registrarme con el código de trabajador que me facilita el cine \textbf{para} acceder a la validación de entradas. & 1. Con un código válido, la cuenta se crea con rol Trabajador.\newline 2. Con un código no válido, se muestra un error y no se crea la cuenta.\newline 3. Sin código, la cuenta se crea como Cliente. \\
@@ -266,17 +269,16 @@ La figura~\ref{fig:casos-uso} resume los casos de uso de cada actor. El cliente 
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{casos-de-uso.png}
+\includegraphics[width=0.8\textwidth]{casos-de-uso.png}
 \caption{Diagrama de casos de uso (provisional).}
 \label{fig:casos-uso}
 \end{figure}
-
-\newpage
 
 \subsection{Especificación de Casos de Uso (CU)}
 A continuación se detallan los dos casos de uso críticos de la aplicación, uno por cada rol, incluyendo su flujo principal y el tratamiento de situaciones de error (flujos alternativos).
 
 \begin{longtable}{L{3.4cm} L{11.6cm}}
+\caption{Detalle del Caso de Uso CU-01.}\\
 \toprule
 \multicolumn{2}{l}{\textbf{CU-01: Compra de entradas}} \\
 \midrule
@@ -285,8 +287,9 @@ A continuación se detallan los dos casos de uso críticos de la aplicación, un
 \multicolumn{2}{l}{\textbf{CU-01: Compra de entradas} (continuación)} \\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 \textbf{Requisitos asociados} & RF-06, RF-07, RF-08, RF-09, RF-11, RF-12, RNF-02, RNF-03 \\
 \textbf{Actor principal} & ACT-02 (Cliente) \\
 \textbf{Actores secundarios} & ACT-04 (Servicio externo) \\
@@ -307,10 +310,10 @@ A continuación se detallan los dos casos de uso críticos de la aplicación, un
 \textbf{6b. Fallo de red:} Se muestra un mensaje recuperable sin perder la selección; un reintento no genera entradas duplicadas.\newline
 \textbf{8a. Menos de una hora para la sesión:} La compra se completa, pero no se programa el aviso. \\
 \textbf{Postcondiciones} & Las entradas quedan almacenadas en la cuenta del cliente y visibles en «Mis entradas», los asientos quedan ocupados y, si procede, el aviso previo a la sesión queda programado. \\
-\caption{Detalle del Caso de Uso CU-01.}\\
 \end{longtable}
 
 \begin{longtable}{L{3.4cm} L{11.6cm}}
+\caption{Detalle del Caso de Uso CU-02.}\\
 \toprule
 \multicolumn{2}{l}{\textbf{CU-02: Validación de una entrada mediante código QR}} \\
 \midrule
@@ -319,8 +322,9 @@ A continuación se detallan los dos casos de uso críticos de la aplicación, un
 \multicolumn{2}{l}{\textbf{CU-02: Validación de una entrada mediante código QR} (continuación)} \\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 \textbf{Requisitos asociados} & RF-10, RNF-05, RNF-08 \\
 \textbf{Actor principal} & ACT-03 (Trabajador) \\
 \textbf{Actores secundarios} & ACT-04 (Servicio externo) \\
@@ -338,7 +342,6 @@ A continuación se detallan los dos casos de uso críticos de la aplicación, un
 \textbf{3a. Entrada ya usada:} Se muestra en rojo junto con la hora de su primer uso.\newline
 \textbf{3b. Entrada de otra sesión:} Se rechaza y se muestra en rojo con el motivo. \\
 \textbf{Postcondiciones} & La entrada válida queda marcada como usada y no puede volver a validarse. En los casos de rechazo, el estado de la entrada no se modifica. \\
-\caption{Detalle del Caso de Uso CU-02.}\\
 \end{longtable}
 
 % ==========================================
@@ -420,8 +423,9 @@ Se aplican los criterios del requisito RNF-09: contraste adecuado, tamaños tác
 \textbf{ID} & \textbf{Requisito} & \textbf{Condiciones y Acción} & \textbf{Resultado Esperado / Obtenido} & \textbf{Estado} \\
 \midrule
 \endhead
-\bottomrule
 \endfoot
+\bottomrule
+\endlastfoot
 
 \textbf{CP-01} & RF-01 & Introducir un correo sin formato válido y pulsar registrarse. & \textbf{Esperado:} muestra un error de validación bajo el campo.\newline \textbf{Obtenido:} -- & Pendiente \\
 \midrule
