@@ -262,7 +262,7 @@ Las historias de usuario sirven como base para el registro de \textit{issues} y 
 \end{longtable}
 
 \subsection{Diagrama de casos de uso}
-La figura~\ref{fig:casos-uso} resume los casos de uso de cada actor. Las relaciones \textit{«include»} indican pasos que siempre forman parte del caso base: seleccionar asientos siempre los bloquea temporalmente, pagar siempre genera el QR de la entrada y escanear un QR siempre implica validarlo en el servidor.
+La figura~\ref{fig:casos-uso} resume los casos de uso de cada actor. El cliente y el trabajador heredan del invitado lo que puede hacer cualquier usuario sin sesión iniciada (consultar la cartelera, buscar películas, cambiar de cine, registrarse e iniciar sesión). Las relaciones \textit{«include»} indican pasos que siempre forman parte del caso base: seleccionar asientos siempre los bloquea temporalmente, pagar siempre genera el QR de la entrada y escanear un QR siempre implica validarlo en el servidor.
 
 \begin{figure}[htbp]
 \centering
