@@ -33,3 +33,7 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Datos reales de cartelera generados localmente (contenido de terceros, no publicar)
+docs/datos-reales/*.json
+docs/datos-reales/*.csv
